@@ -35,9 +35,11 @@ module.exports = {
                     // Réactions aux messages envoyés
                     const sword = '1296498004852740198'; // ID de l'émoji personnalisé "épée"
                     const book = '1296498033311350925'; // ID de l'émoji personnalisé "livre"
+                    const lith = '1295437184869863608'; // ID de l'émoji personnalisé "livre"
 
                     await sentMessage.react(sword);
                     await sentMessage.react(book);
+                    await sentMessage.react(lith);
                 }
 
                 // Supprimer le message de l'utilisateur après traitement
