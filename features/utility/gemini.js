@@ -7,7 +7,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('ask')
+        .setName('gemini')
         .setDescription('Pose une question à Gemini')
         .addStringOption(option =>
             option.setName('question')
