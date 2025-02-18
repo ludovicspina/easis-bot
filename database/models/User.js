@@ -1,5 +1,4 @@
-// models/User.js
-const {DataTypes} = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../database');
 
 const User = sequelize.define('User', {
@@ -12,8 +11,12 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         defaultValue: null,
     },
+    xp: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+    },
 }, {
-    timestamps: false, // Désactive createdAt et updatedAt
+    timestamps: false,
 });
 
 module.exports = User;

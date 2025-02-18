@@ -64,6 +64,8 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 });
 
+// Importer le gestionnaire d'événements pour les messages
+require('./features/experience/message-xp')(client);
 
 // Initialisation en DB des serveurs
 client.on('guildCreate', async (guild) => {
