@@ -67,30 +67,6 @@ client.on(Events.InteractionCreate, async interaction => {
 // Importer le gestionnaire d'événements pour les messages
 require('./features/experience/message-xp')(client);
 
-// Initialisation en DB des serveurs
-// client.on('guildCreate', async (guild) => {
-//     // Vérifie si la guild existe déjà dans la base de données
-//     const existingGuild = await Guild.findOne({ where: { id: guild.id } });
-//
-//     if (!existingGuild) {
-//         // Si la guild n'existe pas, on la crée
-//         await Guild.create({
-//             id: guild.id,
-//             name: guild.name,
-//         });
-//
-//         // Initialiser les commandes avec un statut activé par défaut
-//         const commands = client.commands.map(command => ({
-//             guildId: guild.id,
-//             commandName: command.data.name,
-//             enabled: true,  // Toutes les commandes activées par défaut
-//         }));
-//
-//         await CommandSettings.bulkCreate(commands);
-//     }
-// });
-
-
 
 client.on('messageCreate', async (message) => {
     // Empêche le bot de répondre à ses propres messages
