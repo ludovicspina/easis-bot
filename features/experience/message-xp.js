@@ -18,7 +18,8 @@ module.exports = (client) => {
             user = await User.create({ id, username, xp: 0 });
         }
 
-        user.xp += 5;
+        const randomXP = Math.floor(Math.random() * 5) + 1;
+        user.xp += randomXP;
         await user.save();
     });
 };
