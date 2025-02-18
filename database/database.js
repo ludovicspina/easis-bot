@@ -10,7 +10,7 @@ const sequelize = new Sequelize(
     process.env.DATABASE_USER,
     process.env.DATABASE_PASSWORD,
     {
-        host: 'localhost',  // ou '192.168.1.116' si vous utilisez une adresse IP spécifique
+        host: '192.168.1.116',  // ou '192.168.1.116' si vous utilisez une adresse IP spécifique
         dialect: 'mysql',
         logging: false,
     }

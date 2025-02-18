@@ -9,13 +9,13 @@ module.exports = (client) => {
         if (message.author.bot) return;
 
         // Ajouter des points d'expérience à l'utilisateur
-        const userId = message.author.id;
+        const id = message.author.id;
         const username = message.author.username;
 
-        let user = await User.findOne({ where: { userId } });
+        let user = await User.findOne({ where: { id } });
 
         if (!user) {
-            user = await User.create({ userId, username, xp: 0 });
+            user = await User.create({ id, username, xp: 0 });
         }
 
         user.xp += 5;
