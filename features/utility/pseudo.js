@@ -3,7 +3,7 @@ const cron = require('node-cron');
 // Structure de données pour stocker les pseudonymes et les horaires
 const userPseudos = [
     {
-        userName: 'tetsel', // Remplacez par le nom d'utilisateur complet
+        userId: '117411845966397445', // Remplacez par l'ID de l'utilisateur
         defaultPseudo: '🐗Tetsel🐗',
         timeBasedPseudo: {
             startHour: 23,
@@ -27,10 +27,9 @@ async function updateUserNicknames(client) {
 
     for (const user of userPseudos) {
         try {
-            const members = await guild.members.search({ query: user.userName, limit: 1 });
-            const member = members.first();
+            const member = await guild.members.fetch(user.userId).catch(() => null);
             if (!member) {
-                console.warn(`Member with name ${user.userName} not found in the guild.`);
+                console.warn(`Member with ID ${user.userId} not found in the guild.`);
                 continue;
             }
 
@@ -41,7 +40,7 @@ async function updateUserNicknames(client) {
                 await member.setNickname(user.defaultPseudo).catch(console.error);
             }
         } catch (error) {
-            console.error(`Error updating nickname for user ${user.userName}:`, error);
+            console.error(`Error updating nickname for user ${user.userId}:`, error);
         }
     }
 }
