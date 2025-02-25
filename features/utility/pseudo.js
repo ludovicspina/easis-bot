@@ -29,14 +29,21 @@ async function updateUserNicknames(client) {
     const currentHour = now.getHours();
 
     for (const user of userPseudos) {
-        const member = await client.guilds.cache.first()?.members.fetch(user.userId).catch(console.error);
-        if (!member) continue;
+        try {
+            const member = await client.guilds.cache.first()?.members.fetch(user.userId);
+            if (!member) {
+                console.warn(`Member with ID ${user.userId} not found.`);
+                continue;
+            }
 
-        const { startHour, endHour, pseudo } = user.timeBasedPseudo;
-        if ((currentHour >= startHour || currentHour < endHour)) {
-            await member.setNickname(pseudo).catch(console.error);
-        } else {
-            await member.setNickname(user.defaultPseudo).catch(console.error);
+            const { startHour, endHour, pseudo } = user.timeBasedPseudo;
+            if ((currentHour >= startHour || currentHour < endHour)) {
+                await member.setNickname(pseudo).catch(console.error);
+            } else {
+                await member.setNickname(user.defaultPseudo).catch(console.error);
+            }
+        } catch (error) {
+            console.error(`Error updating nickname for user ${user.userId}:`, error);
         }
     }
 }
