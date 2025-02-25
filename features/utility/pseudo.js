@@ -11,6 +11,15 @@ const userPseudos = [
             pseudo: 'Dédé',
         },
     },
+    {
+        userId: '977565278730870814', // Remplacez par l'ID de l'utilisateur
+        defaultPseudo: '131',
+        timeBasedPseudo: {
+            startHour: 23,
+            endHour: 7,
+            pseudo: 'Bèbèr',
+        },
+    },
     // Ajoutez d'autres utilisateurs ici avec leurs pseudonymes et horaires
 ];
 
