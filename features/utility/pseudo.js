@@ -3,7 +3,7 @@ const cron = require('node-cron');
 // Structure de données pour stocker les pseudonymes et les horaires
 const userPseudos = [
     {
-        userName: 'NomUtilisateur1234', // Remplacez par le nom d'utilisateur complet
+        userName: 'tetsel', // Remplacez par le nom d'utilisateur complet
         defaultPseudo: '🐗Tetsel🐗',
         timeBasedPseudo: {
             startHour: 23,
