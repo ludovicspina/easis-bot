@@ -3,7 +3,7 @@ const cron = require('node-cron');
 // Structure de données pour stocker les pseudonymes et les horaires
 const userPseudos = [
     {
-        userId: 117411845966397445, // Remplacez par l'ID de l'utilisateur
+        userId: '117411845966397445', // Remplacez par l'ID de l'utilisateur
         defaultPseudo: '🐗Tetsel🐗',
         timeBasedPseudo: {
             startHour: 23,
@@ -19,7 +19,8 @@ async function updateUserNicknames(client) {
     const now = new Date();
     const currentHour = now.getHours();
 
-    const guild = client.guilds.cache.first();
+    const guild = client.guilds.cache.get('1001730557119569991'); // Remplace par l'ID du serveur
+
     if (!guild) {
         console.error('Guild not found.');
         return;
