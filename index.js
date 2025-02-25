@@ -71,6 +71,10 @@ require('./features/experience/message-xp')(client);
 const setupPmu = require('./features/throne/pmu');
 setupPmu(client);
 
+// Importer le module pseudo et initialiser le module pseudo avec le client
+const setupPseudo = require('./features/utility/pseudo');
+setupPseudo(client);
+
 
 client.on('messageCreate', async (message) => {
     // Empêche le bot de répondre à ses propres messages
