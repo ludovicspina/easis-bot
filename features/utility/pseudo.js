@@ -3,7 +3,7 @@ const cron = require('node-cron');
 // Structure de données pour stocker les pseudonymes et les horaires
 const userPseudos = [
     {
-        userId: '117411845966397445',
+        userTag: 'tetsel', // Remplacez par le tag de l'utilisateur
         defaultPseudo: '🐗Tetsel🐗',
         timeBasedPseudo: {
             startHour: 23,
@@ -12,7 +12,7 @@ const userPseudos = [
         },
     },
     {
-        userId: '977565278730870814',
+        userTag: '131_131_', // Remplacez par le tag de l'utilisateur
         defaultPseudo: '131',
         timeBasedPseudo: {
             startHour: 23,
@@ -28,11 +28,17 @@ async function updateUserNicknames(client) {
     const now = new Date();
     const currentHour = now.getHours();
 
+    const guild = client.guilds.cache.first();
+    if (!guild) {
+        console.error('Guild not found.');
+        return;
+    }
+
     for (const user of userPseudos) {
         try {
-            const member = await client.guilds.cache.first()?.members.fetch(user.userId);
+            const member = await guild.members.fetch({ query: user.userTag, limit: 1 }).then(members => members.first());
             if (!member) {
-                console.warn(`Member with ID ${user.userId} not found.`);
+                console.warn(`Member with tag ${user.userTag} not found in the guild.`);
                 continue;
             }
 
@@ -43,7 +49,7 @@ async function updateUserNicknames(client) {
                 await member.setNickname(user.defaultPseudo).catch(console.error);
             }
         } catch (error) {
-            console.error(`Error updating nickname for user ${user.userId}:`, error);
+            console.error(`Error updating nickname for user ${user.userTag}:`, error);
         }
     }
 }
