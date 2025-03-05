@@ -64,8 +64,6 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 });
 
-// Importer le gestionnaire d'événements pour les messages
-require('./features/experience/message-xp')(client);
 
 // Importer le module pmu et initialiser le module pmu avec le client
 const setupPmu = require('./features/throne/pmu');
